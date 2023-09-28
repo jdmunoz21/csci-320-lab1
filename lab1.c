@@ -7,7 +7,13 @@
 #include <string.h>
 
 char* readString(char* fileName){
-    char string;
+    static char string[100];
+
+    FILE *f = fopen(fileName, "r");
+    fgets(string, 100, f);
+    fclose(f);
+
+    return string;
 }
 
 char* mysteryExplode(const char* str){
