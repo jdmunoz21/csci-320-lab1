@@ -7,7 +7,7 @@
 #include <string.h>
 
 char* readString(char* fileName){
-    
+    char string;
 }
 
 char* mysteryExplode(const char* str){
@@ -17,7 +17,7 @@ char* mysteryExplode(const char* str){
         lenOfString += i;
     }
 
-    char substring [strlen(str)];
+    char substring[strlen(str)];
     char explodedString[lenOfString];
     substring[0] = '\0';
     explodedString[0] = '\0';
