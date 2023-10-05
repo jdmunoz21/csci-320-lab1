@@ -28,9 +28,10 @@ char* mysteryExplode(const char* str){
     substring[0] = '\0';
     explodedString[0] = '\0';
 
-    for (int n = 0; n < strlen(str); n++){
-        char substringToAdd = str[n];
-        substring[n] = str[n];
+    for (int n = 0; n < strlen(str) - 1; n++){
+        char substringToAdd[1]; 
+        substringToAdd[0] = str[n];
+        strcat(substring, substringToAdd);
         strcat(explodedString, substring);
     }
 
