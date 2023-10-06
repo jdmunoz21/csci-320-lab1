@@ -5,26 +5,27 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 char* readString(char* fileName){
-    static char string[100];
+    char string[100];
 
     FILE *f = fopen(fileName, "r");
     fgets(string, 100, f);
     fclose(f);
 
-    return string;
+    return strdup(string);
 }
 
 char* mysteryExplode(const char* str){
     int lenOfString = 0;
 
-    for (int i = 0; i < strlen(str) + 1; i++){
+    for (int i = 1; i < strlen(str) + 1; i++){
         lenOfString += i;
     }
 
     char substring[strlen(str)];
-    char explodedString[lenOfString];
+    char * explodedString = malloc(lenOfString);
     substring[0] = '\0';
     explodedString[0] = '\0';
 
@@ -32,9 +33,8 @@ char* mysteryExplode(const char* str){
         char substringToAdd[1]; 
         substringToAdd[0] = str[n];
         strcat(substring, substringToAdd);
-        strcat(explodedString, substring);
+        strncat(explodedString, substring, strlen(substring));
     }
 
-    printf("%s\n", explodedString);
-    return 0;
+    return strdup(explodedString);
 }
